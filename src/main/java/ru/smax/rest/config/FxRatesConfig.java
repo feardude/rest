@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
-public class FxRatesServiceConfig {
+public class FxRatesConfig {
     @Bean
     public FxRatesService fxRatesService(Map<String, BigDecimal> fxRates) {
         return new FxRatesServiceImpl(fxRates);
