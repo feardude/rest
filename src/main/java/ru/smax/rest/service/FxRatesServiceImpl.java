@@ -24,10 +24,6 @@ public class FxRatesServiceImpl implements FxRatesService {
 
     @Override
     public BigDecimal getRate(String baseCurrency, String quoteCurrency) {
-        if (baseCurrency.equals(quoteCurrency)) {
-            return ONE;
-        }
-
         if (quoteCurrency.equals(RUB)) {
             return fxRates.getOrDefault(baseCurrency, ZERO);
         }

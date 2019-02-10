@@ -6,7 +6,6 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
-import static java.math.BigDecimal.ONE;
 import static java.math.BigDecimal.ZERO;
 import static org.junit.Assert.assertEquals;
 
@@ -20,14 +19,6 @@ public class FxRatesServiceTest {
     }
 
     private final FxRatesService fxRatesService = new FxRatesServiceImpl(FX_RATES);
-
-    @Test
-    public void singularRate() {
-        assertEquals(
-                ONE,
-                fxRatesService.getRate("RUB", "RUB")
-        );
-    }
 
     @Test
     public void usdRub() {

@@ -11,6 +11,7 @@ import ru.smax.rest.service.FxRatesService;
 
 import java.util.List;
 
+import static java.math.BigDecimal.ONE;
 import static java.util.stream.Collectors.toList;
 
 @AllArgsConstructor
@@ -38,10 +39,22 @@ public class FxRatesController {
         final String baseCode = baseCurrency.toUpperCase();
         final String quoteCode = quoteCurrency.toUpperCase();
 
+        if (baseCode.equals(quoteCode)) {
+            return toSingularRate(baseCode);
+        }
+
         return FxRate.builder()
                 .base(baseCode)
                 .quote(quoteCode)
                 .value(fxRatesService.getRate(baseCode, quoteCode))
+                .build();
+    }
+
+    private FxRate toSingularRate(String currency) {
+        return FxRate.builder()
+                .base(currency)
+                .quote(currency)
+                .value(ONE)
                 .build();
     }
 }
