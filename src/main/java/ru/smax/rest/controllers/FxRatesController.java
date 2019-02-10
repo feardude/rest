@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 import ru.smax.rest.model.FxRate;
 import ru.smax.rest.service.FxRatesService;
 
-import java.math.BigDecimal;
-import java.util.Map;
+import java.util.List;
+
+import static java.util.stream.Collectors.toList;
 
 @AllArgsConstructor
 @RestController
@@ -21,8 +22,14 @@ public class FxRatesController {
     private final FxRatesService fxRatesService;
 
     @GetMapping("/rates")
-    public Map<String, BigDecimal> getRates() {
-        return fxRatesService.getRates();
+    public List<FxRate> getRates() {
+        return fxRatesService.getRates().entrySet().stream()
+                .map(codeToRate -> FxRate.builder()
+                        .base(codeToRate.getKey())
+                        .quote(RUB)
+                        .value(codeToRate.getValue())
+                        .build())
+                .collect(toList());
     }
 
     @GetMapping("/rates/{base}")
