@@ -1,4 +1,4 @@
-package ru.smax.rest.service.config;
+package ru.smax.rest.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
-public class RestServiceConfig {
+public class FxRatesServiceConfig {
     @Bean
     public FxRatesService fxRatesService(Map<String, BigDecimal> fxRates) {
         return new FxRatesServiceImpl(fxRates);

@@ -1,11 +1,11 @@
-package ru.smax.rest.service;
+package ru.smax.rest;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ServiceStarter {
+public class RestServiceStarter {
     public static void main(String[] args) {
-        SpringApplication.run(ServiceStarter.class);
+        SpringApplication.run(RestServiceStarter.class);
     }
 }
