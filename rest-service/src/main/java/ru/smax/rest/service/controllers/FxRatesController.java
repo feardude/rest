@@ -1,6 +1,7 @@
 package ru.smax.rest.service.controllers;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,7 @@ import static java.math.BigDecimal.ONE;
 import static java.util.stream.Collectors.toList;
 
 @AllArgsConstructor
+@Slf4j
 @RestController
 @RequestMapping(path = "/api")
 public class FxRatesController {
@@ -24,6 +26,8 @@ public class FxRatesController {
 
     @GetMapping("/rates")
     public List<FxRate> getRates() {
+        log.info("Requested rates");
+
         return fxRatesService.getRates().entrySet().stream()
                 .map(codeToRate -> FxRate.builder()
                         .base(codeToRate.getKey())
@@ -36,6 +40,9 @@ public class FxRatesController {
     @GetMapping("/rates/{base}")
     public FxRate getRate(@PathVariable(name = "base") String baseCurrency,
                           @RequestParam(name = "quote", defaultValue = RUB) String quoteCurrency) {
+
+        log.info("Requested rate [base={}, quote={}]", baseCurrency, quoteCurrency);
+
         final String baseCode = baseCurrency.toUpperCase();
         final String quoteCode = quoteCurrency.toUpperCase();
 
