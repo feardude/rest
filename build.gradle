@@ -1,20 +1,30 @@
-plugins {
-    id 'java'
+apply from: 'libraries.gradle'
+
+allprojects {
+    group 'ru.smax.rest'
+    version '1.0-SNAPSHOT'
+
+    apply plugin: 'java'
+    apply plugin: 'idea'
+
+    idea {
+        module {
+            inheritOutputDirs = true
+        }
+    }
+
+    repositories {
+        mavenCentral()
+    }
 }
 
-group 'ru.smax.rest'
-version '1.0-SNAPSHOT'
-
-sourceCompatibility = JavaVersion.VERSION_1_8
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    compileOnly 'org.projectlombok:lombok:1.16.4'
+subprojects {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
     
-    compile 'org.springframework.boot:spring-boot-starter-web:2.1.2.RELEASE'
-    
-    testCompile 'junit:junit:4.12'
+    dependencies {
+        compileOnly libraries.lombok
+
+        testCompile libraries.junit
+    }
 }

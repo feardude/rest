@@ -1,2 +1,4 @@
 rootProject.name = 'rest'
 
+include ':rest-client'
+include ':rest-service'

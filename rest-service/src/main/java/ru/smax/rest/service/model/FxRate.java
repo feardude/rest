@@ -1,4 +1,4 @@
-package ru.smax.rest.model;
+package ru.smax.rest.service.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

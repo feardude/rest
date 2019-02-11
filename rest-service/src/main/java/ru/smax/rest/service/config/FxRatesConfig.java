@@ -1,4 +1,4 @@
-package ru.smax.rest.config;
+package ru.smax.rest.service.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

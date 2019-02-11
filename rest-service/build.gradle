@@ -1,0 +1,5 @@
+group = 'ru.smax.rest'
+
+dependencies {
+    compile libraries.springBootWeb
+}

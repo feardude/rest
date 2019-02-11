@@ -1,0 +1,20 @@
+ext {
+    V = [
+            springBoot        : '2.1.2.RELEASE',
+
+            lombok            : '1.16.18',
+
+            junit             : '4.12',
+    ]
+
+    libraries = [
+            springBootWeb     : "org.springframework.boot:spring-boot-starter-web:${V.springBoot}",
+
+            lombok            : "org.projectlombok:lombok:${V.lombok}",
+
+            junit             : "junit:junit:${V.junit}",
+
+    ].withDefault({
+        key -> throw new IllegalArgumentException("Unknown library '$key'")
+    })
+}
